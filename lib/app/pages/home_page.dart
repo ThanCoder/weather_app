@@ -29,8 +29,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   bool isLoading = false;
-  double lat = 16.0360296;
-  double lon = 97.6315875;
+  double lat = 0; //16.0360296;
+  double lon = 0; //97.6315875;
   WeatherDataResponse? data;
 
   Future<void> init() async {
@@ -158,8 +158,11 @@ class _HomePageState extends State<HomePage> {
       if (lon > 0) {
         this.lon = lon;
       }
+      await init();
+    } else {
+      //location မရှိရင်
+      _getCurrentLocation();
     }
-    await init();
   }
 
   String get getRecentPath {

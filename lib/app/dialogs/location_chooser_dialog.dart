@@ -98,6 +98,7 @@ class _LocationChooserDialogState extends State<LocationChooserDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      title: Text('တည်နေရာ ရွေးချယ်မယ်'),
       scrollable: true,
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
