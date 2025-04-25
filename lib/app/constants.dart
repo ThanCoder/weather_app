@@ -5,8 +5,7 @@ const isDebugPrint = false;
 const appBrowserProxyHostUrl = 'https://node-browser.vercel.app';
 const appForwardProxyHostUrl = 'https://express-forward-proxy.vercel.app';
 
-const appCurrentWeatherApiUrl =
-    'https://api.openweathermap.org/data/2.5/weather';
+const appCurrentWeatherApiUrl = 'https://api.openweathermap.org/data/2.5';
 
 //assets
 const defaultIconAssetsPath = 'assets/logo.png';

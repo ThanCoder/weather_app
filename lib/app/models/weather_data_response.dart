@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:weather/app/services/map_services.dart';
+
 class WeatherDataResponse {
   String cityName;
   String base;
@@ -17,16 +19,16 @@ class WeatherDataResponse {
   double mainFeelsLike;
   double mainTempMin;
   double mainTempMax;
-  int mainPressure;
-  int mainHumidity;
-  int mainSeaLevel;
-  int mainGrndLevel;
+  double mainPressure;
+  double mainHumidity;
+  double mainSeaLevel;
+  double mainGrndLevel;
 
   double windSpeed;
-  int windDeg;
+  double windDeg;
   double windGust;
 
-  int cloudsAll;
+  double cloudsAll;
 
   String sysCountry;
   int sysSunrise;
@@ -62,101 +64,39 @@ class WeatherDataResponse {
 
   factory WeatherDataResponse.fromMap(Map<String, dynamic> map) {
     // မိုးလေဝသ အချက်အလက်
-    final cityName = map['name'];
-    if (cityName is! String) {
-      throw Exception('cityName not String');
-    }
-    final base = map['base'];
-    if (base is! String) {
-      throw Exception('base not String');
-    }
-    final visibility = map['visibility'];
-    if (visibility is! int) {
-      throw Exception('visibility not int');
-    }
-    final timezone = map['timezone'];
-    if (timezone is! int) {
-      throw Exception('timezone not int');
-    }
-    final dt = map['dt'];
-    if (dt is! int) {
-      throw Exception('dt not int');
-    }
+    final cityName = MapServices.getString(map['name']);
+    final base = MapServices.getString(map['base']);
+    final visibility = MapServices.getInt(map['visibility']);
+    final timezone = MapServices.getInt(map['timezone']);
+    final dt = MapServices.getInt(map['dt']);
     //coord
-    final coordLon = map['coord']['lon'];
-    if (coordLon is! double) {
-      throw Exception('coordLon not double');
-    }
-    final coordLat = map['coord']['lat'];
-    if (coordLat is! double) {
-      throw Exception('coordLat not double');
-    }
+    double coordLon = MapServices.getDouble(map['coord']['lon']);
+    double coordLat = MapServices.getDouble(map['coord']['lat']);
     // weather
-    final weatherMain = map['weather'][0]['main'];
-    if (weatherMain is! String) {
-      throw Exception('weatherMain not String');
-    }
-    final weatherDescription = map['weather'][0]['description'];
-    if (weatherDescription is! String) {
-      throw Exception('weatherDescription not String');
-    }
-    final weatherIcon = map['weather'][0]['icon'];
-    if (weatherIcon is! String) {
-      throw Exception('weatherIcon not String');
-    }
+    final weatherMain = MapServices.getString(map['weather'][0]['main']);
+    final weatherDescription =
+        MapServices.getString(map['weather'][0]['description']);
+    final weatherIcon = MapServices.getString(map['weather'][0]['icon']);
     //main
-    final mainTemperature = map['main']['temp'];
-    if (mainTemperature is! double) {
-      throw Exception('mainTemperature not double');
-    }
-    final mainFeelsLike = map['main']['feels_like'];
-    if (mainFeelsLike is! double) {
-      throw Exception('mainFeelsLike not double');
-    }
-    final mainTempMin = map['main']['temp_min'];
-    if (mainTempMin is! double) {
-      throw Exception('mainTempMin not double');
-    }
-    final mainTempMax = map['main']['temp_max'];
-    if (mainTempMax is! double) {
-      throw Exception('mainTempMax not double');
-    }
-    final mainPressure = map['main']['pressure'];
-    if (mainPressure is! int) {
-      throw Exception('mainPressure not int');
-    }
-    final mainHumidity = map['main']['humidity'];
-    if (mainHumidity is! int) {
-      throw Exception('mainHumidity not int');
-    }
-    final mainSeaLevel = map['main']['sea_level'];
-    if (mainSeaLevel is! int) {
-      throw Exception('mainSeaLevel not int');
-    }
-    final mainGrndLevel = map['main']['grnd_level'];
-    if (mainGrndLevel is! int) {
-      throw Exception('mainGrndLevel not int');
-    }
+    final mainTemperature = MapServices.getDouble(map['main']['temp']);
+    final mainFeelsLike = MapServices.getDouble(map['main']['feels_like']);
+    final mainTempMin = MapServices.getDouble(map['main']['temp_min']);
+    final mainTempMax = MapServices.getDouble(map['main']['temp_max']);
+    final mainPressure = MapServices.getDouble(map['main']['pressure']);
+    final mainHumidity = MapServices.getDouble(map['main']['humidity']);
+    final mainSeaLevel = MapServices.getDouble(map['main']['sea_level']);
+    final mainGrndLevel = MapServices.getDouble(map['main']['grnd_level']);
 
     // လေ
-    final windSpeed = map['wind']['speed'];
-    if (windSpeed is! double) {
-      throw Exception('windSpeed not double');
-    }
-    final windDeg = map['wind']['deg'];
-    if (windDeg is! int) {
-      throw Exception('windDeg not int');
-    }
-    final windGust = map['wind']['gust'];
-    if (windGust is! double) {
-      throw Exception('windGust not double');
-    }
+    final windSpeed = MapServices.getDouble(map['wind']['speed']);
+    final windDeg = MapServices.getDouble(map['wind']['deg']);
+    final windGust = MapServices.getDouble(map['wind']['gust']);
     // တိမ်
-    final cloudsAll = map['clouds']['all'];
+    final cloudsAll = MapServices.getDouble(map['clouds']['all']);
     //
-    final sysCountry = map['sys']['country'];
-    final sysSunrise = map['sys']['sunrise'];
-    final sysSunset = map['sys']['sunset'];
+    final sysCountry = MapServices.getString(map['sys']['country']);
+    final sysSunrise = MapServices.getInt(map['sys']['sunrise']);
+    final sysSunset = MapServices.getInt(map['sys']['sunset']);
 
     return WeatherDataResponse(
       cityName: cityName,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather/app/pages/home/forecast_page.dart';
 
 import '../pages/index.dart';
 
@@ -8,19 +9,24 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         body: TabBarView(
           children: [
             HomePage(),
+            ForecastPage(),
             AppMorePage(),
           ],
         ),
         bottomNavigationBar: TabBar(
           tabs: [
             Tab(
-              text: 'Home',
+              text: 'ယနေ့',
               icon: Icon(Icons.home),
+            ),
+            Tab(
+              text: 'ခန့်မှန်းချက်များ',
+              icon: Icon(Icons.cloud_outlined),
             ),
             Tab(
               text: 'More',
