@@ -46,7 +46,7 @@ class WeatherForecastListItem extends StatelessWidget {
             _getDayNameWidget(),
 
             ListTileWithDesc(
-              title: '${data.pop}%',
+              title: '${(data.pop * 100).toInt()}%',
               desc: 'မိုးရွာနိုင်ချေ။ (0 မှ 1 အတွင်း – 0 = 0%, 1 = 100%)။',
             ),
             ListTileWithDesc(
