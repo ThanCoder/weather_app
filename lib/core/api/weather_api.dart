@@ -101,7 +101,7 @@ class WeatherApi {
 
         final locationBody = jsonDecode(body);
 
-        print('Geocoding response: $locationBody');
+        // print('Geocoding response: $locationBody');
 
         if (locationBody is Map<String, dynamic>) {
           final address = locationBody['address'];
