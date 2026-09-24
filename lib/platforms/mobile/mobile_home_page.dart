@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:t_widgets/t_widgets.dart';
 import 'package:weather/core/api/weather_api.dart';
 import 'package:weather/core/models/weather_response.dart';
+import 'package:weather/platforms/components/card_button.dart';
 import 'package:weather/platforms/components/dialog/error_alert_dialog.dart';
 import 'package:weather/platforms/mobile/weather_mobile_page.dart';
 
@@ -52,7 +53,9 @@ class _MobileHomePageState extends State<MobileHomePage> {
       return Center(child: TLoaderRandom());
     }
     if (weather == null) {
-      return Center(child: Text('Weather is null!'));
+      return Center(
+        child: CardButton(title: 'Weather is null!', onRefresh: init),
+      );
     }
     return WeatherMobilePage(weather: weather!);
   }

@@ -23,6 +23,7 @@ dependencies:
   cfb_store: ^0.7.0
   path_provider: ^2.1.6
   package_info_plus: ^10.2.1
+  url_launcher: ^6.3.2
 # flutter pub upgrade dart_core_extensions t_widgets t_client
 
 dev_dependencies:

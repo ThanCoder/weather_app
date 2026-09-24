@@ -121,7 +121,7 @@ class WeatherApi {
             countryCode = address['country_code'] as String?;
           }
         }
-      }
+      }   
 
       // ─────────────────────────────
       // 3. WeatherResponse
